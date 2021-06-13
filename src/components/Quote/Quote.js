@@ -23,11 +23,12 @@ const Quote = ({result}) => {
   if(Object.keys(result).length === 0) return null;
   return ( 
     <ResultDiv>
-      <Price>The price is:<span>{result.PRICE}</span></Price>
-      <Info>Highest price of the day: <span>{result.HIGHDAY}</span> </Info>
-      <Info>Lowest price of the day: <span>{result.LOWDAY}</span> </Info>
-      <Info>Variation in the last 24 hours: <span>{result.CHANGEPCT24HOUR}</span> </Info>
-      <Info>Last update: <span>{result.LASTUPDATE}</span> </Info>
+      <Price>The price is:<span>{result.last_price[0]}</span></Price>
+      <Info>Lowest ask price: <span>{result.min_ask[0]}</span> </Info>
+      <Info>Highest bid price: <span>{result.max_bid[0]}</span> </Info>
+      <Info>Volume: <span>{result.volume[0]}</span> </Info>
+      <Info>Price variation 24h: <span>{result.price_variation_24h}</span> </Info>
+      <Info>Price variation 7d: <span>{result.price_variation_7d}</span> </Info>
     </ResultDiv>
   );
 }

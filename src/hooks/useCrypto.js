@@ -32,8 +32,8 @@ const useCrypto = (label, stateInitial, options) => {
           value={state}
         >
           <option value="">-Choose your option-</option>
-          {options.map(option =>(
-            <option key={option.CoinInfo.Id} value={option.CoinInfo.Name}>{option.CoinInfo.FullName}</option>
+          {options.map((option, index) =>(
+            <option key={`crypto-${index+1}`} value={option.code}>{option.name}</option>
           ))}
         </Selectt>
       </>
