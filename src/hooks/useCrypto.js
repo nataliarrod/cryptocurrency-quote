@@ -20,10 +20,10 @@ const Selectt = styled.select`
     font-size: 1.2rem;
 `;
 
-const useCoin = (label, stateInitial, options) => {
+const useCrypto = (label, stateInitial, options) => {
   const [state, setState] = useState(stateInitial);
 
-  const Select = () => {
+  const SelectCrypto = () => {
     return (
       <>
         <Label>{label}</Label>
@@ -33,14 +33,14 @@ const useCoin = (label, stateInitial, options) => {
         >
           <option value="">-Choose your option-</option>
           {options.map(option =>(
-            <option key={option.code} value={option.code}>{option.name}</option>
+            <option key={option.CoinInfo.Id} value={option.CoinInfo.Name}>{option.CoinInfo.FullName}</option>
           ))}
         </Selectt>
       </>
     );
   };
 
-  return [state, Select, setState];
+  return [state, SelectCrypto, setState];
 }
  
-export default useCoin;
+export default useCrypto;
