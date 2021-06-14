@@ -50,7 +50,7 @@ function Landing() {
       setIsLoading(true);
       const resultData = await axios.get(url);
       setIsLoading(false);
-      setResult(resultData.ticker);
+      setResult(resultData.data.ticker);
     };
     quoteCrypto();
   }, [coin, crypto]);
