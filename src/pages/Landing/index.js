@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import styled from "@emotion/styled";
+import styled from "styled-components";
 import imagen from "../../assets/img/cryptomonedas.png";
 import Form from "../../components/Form/Form";
 import axios from "axios";
 import Quote from "../../components/Quote/Quote";
 import Spinner from "../../components/Spinner/Spinner";
 
-const Container = styled.div`
+const Container = styled.div `
   max-width: 900px;
   margin: 0 auto;
   @media (min-width: 992px) {
@@ -16,11 +16,11 @@ const Container = styled.div`
   }
 `;
 
-const Image = styled.img`
+const Image = styled.img `
   max-width: 100%;
   margin-top: 5rem;
 `;
-const Header = styled.h1`
+const Header = styled.h1 `
   font-family: "Bebas Neue", cursive;
   color: #fff;
   text-align: left;
@@ -38,45 +38,50 @@ const Header = styled.h1`
 `;
 
 function Landing() {
-  const [coin, setCoin] = useState("");
-  const [crypto, setCrypto] = useState("");
-  const [result, setResult] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+    const [coin, setCoin] = useState("");
+    const [crypto, setCrypto] = useState("");
+    const [result, setResult] = useState({});
+    const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
+    useEffect(() => {
 
-    const quoteCrypto = async () => {
-      if (coin === "") return;
-      const url = `http://cripto-rogive.vercel.app/markets/${crypto}-${coin}`;
-      setIsLoading(true);
-      const resultData = await axios.get(url);
-      setIsLoading(false);
-      setResult(resultData.ticker);
-    };
-    quoteCrypto();
-  }, [coin, crypto]);
+        const quoteCrypto = async() => {
+            if (coin === "") return;
+            const url = `http://cripto-rogive.vercel.app/markets/${crypto}-${coin}`;
+            setIsLoading(true);
+            const resultData = await axios.get(url);
+            setIsLoading(false);
+            setResult(resultData.ticker);
+        };
+        quoteCrypto();
+    }, [coin, crypto]);
 
-  return (
-    <Container>
-      <div>
-        <Image src={imagen} alt="image crypto" />
-      </div>
-      <div>
-        <Header>Quote cryptocurrencies instantly</Header>
-        <Form setCoin={setCoin} setCrypto={setCrypto} />
-        {
-          isLoading ? (
-            <Spinner/> 
-          )
-          : (
-            <Quote 
-              result={result}
-            />
-          )
-        }
-      </div>
-    </Container>
-  );
+    return ( <
+        Container >
+        <
+        div >
+        <
+        Image src = { imagen }
+        alt = "image crypto" / >
+        <
+        /div> <
+        div >
+        <
+        Header > Quote cryptocurrencies instantly < /Header> <
+        Form setCoin = { setCoin }
+        setCrypto = { setCrypto }
+        /> {
+            isLoading ? ( <
+                    Spinner / >
+                ) :
+                ( <
+                    Quote result = { result }
+                    />
+                )
+        } <
+        /div> <
+        /Container>
+    );
 }
 
 export default Landing;
