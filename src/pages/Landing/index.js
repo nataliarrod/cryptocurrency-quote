@@ -47,7 +47,7 @@ function Landing() {
 
         const quoteCrypto = async() => {
             if (coin === "") return;
-            const url = `http://cripto-rogive.vercel.app/markets/${crypto}-${coin}`;
+            const url = `https://cripto-rogive.vercel.app/markets/${crypto}-${coin}`;
             setIsLoading(true);
             const resultData = await axios.get(url);
             setIsLoading(false);
